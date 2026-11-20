@@ -1,32 +1,18 @@
 {
-  "name": "disaster-response-frontend",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "disaster-response-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "install-all": "cd disaster-response-frontend && npm install && cd ../disaster-response-backend && npm install",
+    "dev": "concurrently -n backend,frontend,ml -c cyan,green,yellow \"npm run dev --prefix disaster-response-backend\" \"npm run dev --prefix disaster-response-frontend\" \"python -m uvicorn main:app --app-dir disaster-response-ml --port 8000\"",
+    "dev:web": "concurrently \"npm run dev --prefix disaster-response-backend\" \"npm run dev --prefix disaster-response-frontend\""
   },
-  "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.1",
-    "@vis.gl/react-google-maps": "^1.9.0",
-    "chart.js": "^4.5.1",
-    "lucide-react": "^1.28.0",
-    "react": "^19.2.8",
-    "react-chartjs-2": "^5.3.1",
-    "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2",
-    "three": "^0.185.1"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
-    "oxlint": "^1.75.0",
-    "vite": "^8.2.0",
-    "vite-plugin-pwa": "^1.3.0"
+    "concurrently": "^10.0.4"
   }
 }
